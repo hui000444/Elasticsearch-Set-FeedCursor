@@ -1,0 +1,15 @@
+packages
+*.suo
+bin
+obj
+debug
+*.user
+_ReSharper.*
+tmp
+logs
+build/scripts/build/commit-version.txt
+test/External-API-Integration/.idea/*
+.sonar
+Atomiq
+opencover-report
+build/tools/ps-gets/OpenCover.4.5.3207/results.xml
