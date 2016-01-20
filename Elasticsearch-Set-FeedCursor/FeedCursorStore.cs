@@ -15,21 +15,23 @@ namespace Elasticsearch.Set.FeedCursor
             this.indexName = indexName;
             this.feedType = feedType;
             client = ElasticClientFactory.Create(baseAddresses);
-            ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
         }
 
         public void Set(FeedCursor cursor)
         {
+            ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
             client.Index(cursor, d => d.Index(indexName).Type("feed_cursor").Id(feedType).Refresh());
         }
 
         public FeedCursor Get()
         {
+            ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
             return client.Get<FeedCursor>(g => g.Index(indexName).Type("feed_cursor").Id(feedType)).Source;
         }
 
         public void Delete()
         {
+            ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
             client.Delete<FeedCursor>(d => d.Index(indexName).Type("feed_cursor").Id(feedType));
         }
 
